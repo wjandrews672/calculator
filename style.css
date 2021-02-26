@@ -1,0 +1,61 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    display: grid;
+    
+}
+
+#calc {
+    border: 2px black solid;
+    height:70%;
+    width: 50%;
+    display: grid;
+    justify-self: center;
+    align-self: center;
+}
+
+#output {
+    border: 2px black solid;
+    height: 30%;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.number {
+    border: 2px black solid;
+    font-size: 2rem;
+    height: 60px;
+    width: 80px;
+    /* grid-row: 1 / span 5;
+    grid-column: 1 / span 3; */
+}
+
+#num {
+    grid-row: 1 / span 5;
+    grid-column: 1 / span 3;
+}
+
+#op {
+    grid-row: 1 / span 5;
+    grid-column: 4 / span 1;
+}
+
+/* #buttons > .number {
+    display: grid;
+    grid-row: 1 / span 5;
+    grid-column: 1 / span 3;
+} */
+
+.operator {
+    border: 2px black solid;
+    font-size: 2rem;
+    height: 60px;
+    width: 80px;
+    /* justify-self: flex-end; */
+    /* grid-row: 1 / span 5;
+    grid-column: 4 / span 1; */
+}
