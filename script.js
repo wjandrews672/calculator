@@ -1,13 +1,14 @@
 let screen = document.querySelector('p');
 const numberButtons = document.querySelectorAll('[data-number]');
 const opButtons = document.querySelectorAll('[data-operator]');
-const equalsButton= document.querySelectorAll('[data-equals]');
-// const clearButton
+const equalsButton = document.querySelector('[data-equals]');
+const clearButton = document.querySelector('.clear');
 // const deleteButton
 
 let displayValuex = '';
 let displayValuey = '';
-let operateValue = '';
+let currentValue = '';
+let operater = '';
 
 
 function add(x, y) {
@@ -26,10 +27,38 @@ function multiply(x, y) {
     return x * y;
 }
 
-// function operate(x, operateValue, y) {
-//     return operateValue(x, y);
-//     //why error code
-// }
+function clearScreen() {
+    screen.textContent = '';
+}
+
+function operate(op, x, y) {
+    x = Number(displayValuex);
+    y = Number(displayValuey);
+    op = operater;
+        if (op == 'multiply') {
+            currentValue = multiply(x,y);
+        } else  if (op == 'divide') {
+            currentValue = divide(x,y);
+        } else  if (op == 'add') {
+            currentValue = add(x,y);
+        } else  if (op == 'subtract') {
+            currentValue = subtract(x,y);
+        }
+    console.log('x',x)
+    console.log('y',y)
+    console.log('current',currentValue)
+    screen.textContent = currentValue;
+}
+
+function setOperation() {
+    //define display values
+    if (displayValuex == '') {
+            displayValuex = screen.textContent;
+        } else {
+            displayValuey = screen.textContent;
+        }
+    }
+
 
 // const displayValue = function() {
 
@@ -37,33 +66,40 @@ function multiply(x, y) {
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        // if (screen = '') {
-            displayValuex +=button.textContent;
+        if (screen.textContent == displayValuex) {
+            clearScreen();
             screen.textContent += button.textContent;
-        // } else {
-            // displayValuey +=button.textContent;
-            // screen.textContent += button.textContent;
-        // }
+        } else {
+            screen.textContent += button.textContent;
+        }
     });
 });
 
 opButtons.forEach((button) => {
     button.addEventListener('click', () => {
         if (button.textContent == 'x') {
-            operateValue = multiply;
+            operater = 'multiply';
         } else  if (button.textContent == '/') {
-            operateValue = divide;
+            operater = 'divide';
         } else  if (button.textContent == '+') {
-            operateValue = add;
+            operater = 'add';
         } else  if (button.textContent == '-') {
-            operateValue = subtract;
+            operater = 'subtract';
         }
         //run operate function on click
         //x = display value, then y equal display value
-    console.log(operateValue)
+    setOperation();
+    operate();
+    console.log(operater)
+    // console.log('x', displayValuex)
+    // console.log('y', displayValuey)
+    // console.log('current',currentValue)
     });
 });
 
-// equalsButton.addEventListener('click', operate(displayValuex, operateValue, displayValuey));
-//clearButton.addEventListener
+equalsButton.addEventListener('click', () => {
+    setOperation();
+    operate();
+});
+clearButton.addEventListener('click', clearScreen);
 //deleteButton.addEventListener
