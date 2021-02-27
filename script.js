@@ -86,11 +86,16 @@ opButtons.forEach((button) => {
         } else  if (button.textContent == '-') {
             operater = 'subtract';
         }
+        setOperation();
+        if (displayValuey != '') {
+            operate();
+            console.log(operater)
+        } 
         //run operate function on click
         //x = display value, then y equal display value
-    setOperation();
-    operate();
-    console.log(operater)
+    // setOperation();
+    // operate();
+    // console.log(operater)
     // console.log('x', displayValuex)
     // console.log('y', displayValuey)
     // console.log('current',currentValue)
