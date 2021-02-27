@@ -8,53 +8,90 @@ html, body {
 #calc {
     border: 2px black solid;
     height:70%;
-    width: 50%;
+    width: auto;
+    max-width: 400px;
     display: grid;
     justify-self: center;
     align-self: center;
+    background-color: rgb(114, 109, 109);
+    border-radius: 10px;
 }
 
 #output {
+    display: grid;
     border: 2px black solid;
-    height: 30%;
+    min-height: 60px;
+    width: 95%;
+    justify-self: center;
+    margin-top: 10px;
+    background-color: rgb(185, 181, 181);
+    border-radius: 10px;
+    justify-content: right;
+    align-content: center;
 }
+
+p {
+    font-size: 2rem;
+    margin: 0px 30px 0px 0px;
+}
+
+#remove {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-content: end;
+    grid-gap: 6px;
+    margin: 6px;
+}
+
+.clear {
+    border: 2px black solid;
+    font-size: 2rem;
+    height: 70px;
+    width: auto;
+    background-color: rgb(64, 64, 212);
+    border-radius: 10px;
+}
+
+.delete {
+    border: 2px black solid;
+    font-size: 2rem;
+    height: auto;
+    width: auto;
+    background-color: rgb(196, 66, 66);
+    border-radius: 10px;
+}
+
 
 #buttons {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 6px;
+    margin: 6px;
+    
 }
 
 .number {
     border: 2px black solid;
     font-size: 2rem;
-    height: 60px;
-    width: 80px;
+    height: auto;
+    width: auto;
+    border-radius: 10px;
+    background-color: rgb(185, 181, 181);
+    padding: 10px 30px;
     /* grid-row: 1 / span 5;
     grid-column: 1 / span 3; */
+    /* use fr,repeat on children buttons */
 }
-
-#num {
-    grid-row: 1 / span 5;
-    grid-column: 1 / span 3;
-}
-
-#op {
-    grid-row: 1 / span 5;
-    grid-column: 4 / span 1;
-}
-
-/* #buttons > .number {
-    display: grid;
-    grid-row: 1 / span 5;
-    grid-column: 1 / span 3;
-} */
 
 .operator {
     border: 2px black solid;
     font-size: 2rem;
-    height: 60px;
-    width: 80px;
+    height: auto;
+    width: auto;
+    background-color: rgb(168, 197, 168);
+    border-radius: 10px;
     /* justify-self: flex-end; */
     /* grid-row: 1 / span 5;
     grid-column: 4 / span 1; */
