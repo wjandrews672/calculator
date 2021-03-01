@@ -29,9 +29,27 @@ function multiply(x, y) {
 
 function clearScreen() {
     screen.textContent = '';
+    // displayValuex = '';
+    // displayValuey = '';
+    // currentValue = '';
+}
+//current value becomes x and next value is y
+function setValues() {
+    if (displayValuex == '') { //|| displayValuex == currentValue) {
+        displayValuex = screen.textContent;
+    } else {
+        displayValuey = screen.textContent;
+    }
+
+    // x = Number(displayValuex);
+    // y = Number(displayValuey);
+    // op = operater;
+    console.log('x',displayValuex)
+    console.log('y',displayValuey)
 }
 
 function operate(op, x, y) {
+    // setValues();
     x = Number(displayValuex);
     y = Number(displayValuey);
     op = operater;
@@ -44,20 +62,22 @@ function operate(op, x, y) {
         } else  if (op == 'subtract') {
             currentValue = subtract(x,y);
         }
+    displayValuex = currentValue;
+    displayValuey = '';
     console.log('x',x)
     console.log('y',y)
     console.log('current',currentValue)
     screen.textContent = currentValue;
 }
 
-function setOperation() {
-    //define display values
-    if (displayValuex == '') {
-            displayValuex = screen.textContent;
-        } else {
-            displayValuey = screen.textContent;
-        }
-    }
+// function setOperation() {
+//     //define display values
+//     if (displayValuex == '') {
+//             displayValuex = screen.textContent;
+//         } else {
+//             displayValuey = screen.textContent;
+//         }
+//     }
 
 
 // const displayValue = function() {
@@ -77,6 +97,8 @@ numberButtons.forEach((button) => {
 
 opButtons.forEach((button) => {
     button.addEventListener('click', () => {
+        setValues();
+        // displayValuey != '' ? operate() : console.log('not operating');
         if (button.textContent == 'x') {
             operater = 'multiply';
         } else  if (button.textContent == '/') {
@@ -86,25 +108,20 @@ opButtons.forEach((button) => {
         } else  if (button.textContent == '-') {
             operater = 'subtract';
         }
-        setOperation();
-        if (displayValuey != '') {
-            operate();
-            console.log(operater)
-        } 
         //run operate function on click
         //x = display value, then y equal display value
-    // setOperation();
-    // operate();
-    // console.log(operater)
-    // console.log('x', displayValuex)
-    // console.log('y', displayValuey)
-    // console.log('current',currentValue)
+        // displayValuey != '' ? operate() : '';
+        // console.log(operater)
+        // console.log('x', displayValuex)
+        // console.log('y', displayValuey)
+        // console.log('current',currentValue)
     });
 });
 
 equalsButton.addEventListener('click', () => {
-    setOperation();
+    setValues();
     operate();
 });
+
 clearButton.addEventListener('click', clearScreen);
 //deleteButton.addEventListener
