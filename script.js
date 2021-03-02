@@ -3,12 +3,14 @@ const numberButtons = document.querySelectorAll('[data-number]');
 const opButtons = document.querySelectorAll('[data-operator]');
 const equalsButton = document.querySelector('[data-equals]');
 const clearButton = document.querySelector('.clear');
+
 // const deleteButton
 
 let displayValuex = '';
 let displayValuey = '';
 let currentValue = '';
 let operater = '';
+let opCount = 0;
 
 
 function add(x, y) {
@@ -97,8 +99,8 @@ numberButtons.forEach((button) => {
 
 opButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        setValues();
-        // displayValuey != '' ? operate() : console.log('not operating');
+        // setValues();
+        opCount > 0 ? (setValues(),operate()) : setValues();
         if (button.textContent == 'x') {
             operater = 'multiply';
         } else  if (button.textContent == '/') {
@@ -108,6 +110,8 @@ opButtons.forEach((button) => {
         } else  if (button.textContent == '-') {
             operater = 'subtract';
         }
+        // opCount > 0 ? (setValues(),operate()) : setValues();
+        opCount++;
         //run operate function on click
         //x = display value, then y equal display value
         // displayValuey != '' ? operate() : '';
@@ -121,6 +125,7 @@ opButtons.forEach((button) => {
 equalsButton.addEventListener('click', () => {
     setValues();
     operate();
+    opCount = 0;
 });
 
 clearButton.addEventListener('click', clearScreen);
