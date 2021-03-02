@@ -31,23 +31,22 @@ function multiply(x, y) {
 
 function clearScreen() {
     screen.textContent = '';
-    // displayValuex = '';
-    // displayValuey = '';
-    // currentValue = '';
+}
+
+function clearValues() {
+    displayValuex = '';
+    displayValuey = '';
+    currentValue = '';
+    operater = '';
+    opCount = 0;
 }
 //current value becomes x and next value is y
 function setValues() {
-    if (displayValuex == '') { //|| displayValuex == currentValue) {
+    if (displayValuex == '') { 
         displayValuex = screen.textContent;
     } else {
         displayValuey = screen.textContent;
     }
-
-    // x = Number(displayValuex);
-    // y = Number(displayValuey);
-    // op = operater;
-    console.log('x',displayValuex)
-    console.log('y',displayValuey)
 }
 
 function operate(op, x, y) {
@@ -64,27 +63,11 @@ function operate(op, x, y) {
         } else  if (op == 'subtract') {
             currentValue = subtract(x,y);
         }
+
     displayValuex = currentValue;
     displayValuey = '';
-    console.log('x',x)
-    console.log('y',y)
-    console.log('current',currentValue)
     screen.textContent = currentValue;
 }
-
-// function setOperation() {
-//     //define display values
-//     if (displayValuex == '') {
-//             displayValuex = screen.textContent;
-//         } else {
-//             displayValuey = screen.textContent;
-//         }
-//     }
-
-
-// const displayValue = function() {
-
-// }
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -99,8 +82,9 @@ numberButtons.forEach((button) => {
 
 opButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        // setValues();
+
         opCount > 0 ? (setValues(),operate()) : setValues();
+
         if (button.textContent == 'x') {
             operater = 'multiply';
         } else  if (button.textContent == '/') {
@@ -110,15 +94,8 @@ opButtons.forEach((button) => {
         } else  if (button.textContent == '-') {
             operater = 'subtract';
         }
-        // opCount > 0 ? (setValues(),operate()) : setValues();
+
         opCount++;
-        //run operate function on click
-        //x = display value, then y equal display value
-        // displayValuey != '' ? operate() : '';
-        // console.log(operater)
-        // console.log('x', displayValuex)
-        // console.log('y', displayValuey)
-        // console.log('current',currentValue)
     });
 });
 
@@ -128,5 +105,8 @@ equalsButton.addEventListener('click', () => {
     opCount = 0;
 });
 
-clearButton.addEventListener('click', clearScreen);
+clearButton.addEventListener('click', () => {
+    clearScreen();
+    clearValues();
+});
 //deleteButton.addEventListener
