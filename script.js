@@ -65,10 +65,11 @@ function operate(op, x, y) {
         }
 
     if ((y == 0) && (op == 'divide')) {
-        screen.textContent = '0'
+        // screen.textContent = '0'
         clearValues()
         alert('cannot divide by zero')
     } else {
+        currentValue = Math.round(currentValue * 100) / 100;
         displayValuex = currentValue;
         displayValuey = '';
         screen.textContent = currentValue;
