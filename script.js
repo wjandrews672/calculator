@@ -1,16 +1,16 @@
-let screen = document.querySelector('p');
+let screen = document.querySelector('.screen');
 const numberButtons = document.querySelectorAll('[data-number]');
 const opButtons = document.querySelectorAll('[data-operator]');
 const equalsButton = document.querySelector('[data-equals]');
 const clearButton = document.querySelector('.clear');
-
-// const deleteButton
+const deleteButton = document.querySelector('.delete');
 
 let displayValuex = '';
 let displayValuey = '';
 let currentValue = '';
 let operater = '';
 let opCount = 0;
+// screen.textContent='0';
 
 
 function add(x, y) {
@@ -64,9 +64,15 @@ function operate(op, x, y) {
             currentValue = subtract(x,y);
         }
 
-    displayValuex = currentValue;
-    displayValuey = '';
-    screen.textContent = currentValue;
+    if ((y == 0) && (op == 'divide')) {
+        screen.textContent = '0'
+        clearValues()
+        alert('cannot divide by zero')
+    } else {
+        displayValuex = currentValue;
+        displayValuey = '';
+        screen.textContent = currentValue;
+    };
 }
 
 numberButtons.forEach((button) => {
@@ -77,6 +83,7 @@ numberButtons.forEach((button) => {
         } else {
             screen.textContent += button.textContent;
         }
+
     });
 });
 
@@ -109,4 +116,9 @@ clearButton.addEventListener('click', () => {
     clearScreen();
     clearValues();
 });
-//deleteButton.addEventListener
+
+deleteButton.addEventListener('click', () => {
+    let length = screen.textContent.length
+    screen.textContent = screen.textContent.slice(0, length-1)
+});
+
