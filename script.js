@@ -10,8 +10,9 @@ let displayValuey = '';
 let currentValue = '';
 let operater = '';
 let opCount = 0;
+let equalsCount = 0;
+let readyForY = false;
 // screen.textContent='0';
-
 
 function add(x, y) {
     return x + y;
@@ -44,13 +45,14 @@ function clearValues() {
 function setValues() {
     if (displayValuex == '') { 
         displayValuex = screen.textContent;
-    } else {
+    } else if (readyForY == true) {
         displayValuey = screen.textContent;
     }
 }
 
 function operate(op, x, y) {
     // setValues();
+    if (readyForY == false) { return };
     x = Number(displayValuex);
     y = Number(displayValuey);
     op = operater;
@@ -71,8 +73,10 @@ function operate(op, x, y) {
     } else {
         currentValue = Math.round(currentValue * 100) / 100;
         displayValuex = currentValue;
-        displayValuey = '';
+        displayValuey = null
         screen.textContent = currentValue;
+        readyForY = false;
+    
     };
 }
 
@@ -84,7 +88,7 @@ numberButtons.forEach((button) => {
         } else {
             screen.textContent += button.textContent;
         }
-
+        readyForY = true;
     });
 });
 
@@ -102,14 +106,20 @@ opButtons.forEach((button) => {
         } else  if (button.textContent == '-') {
             operater = 'subtract';
         }
-
+// dont run operate on multiple ops pushes
         opCount++;
+        equalsCount = 0;
     });
 });
 
 equalsButton.addEventListener('click', () => {
-    setValues();
-    operate();
+    if (equalsCount < 1) {
+        if (operater != ''){
+            setValues();
+            operate(); 
+            equalsCount ++;
+        }
+    }
     opCount = 0;
 });
 
