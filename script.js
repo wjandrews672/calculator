@@ -4,6 +4,9 @@ const opButtons = document.querySelectorAll('[data-operator]');
 const equalsButton = document.querySelector('[data-equals]');
 const clearButton = document.querySelector('.clear');
 const deleteButton = document.querySelector('.delete');
+const decimal = document.querySelector('[data-point]');
+window.addEventListener('keydown',readKeypress)
+
 
 let displayValuex = '';
 let displayValuey = '';
@@ -31,7 +34,7 @@ function multiply(x, y) {
 }
 
 function clearScreen() {
-    screen.textContent = '';
+    screen.textContent = 0;
 }
 
 function clearValues() {
@@ -82,8 +85,11 @@ function operate(op, x, y) {
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (screen.textContent == displayValuex) {
-            clearScreen();
+        if (screen.textContent == 0) {
+            screen.textContent = '';
+            screen.textContent += button.textContent;
+        } else if (screen.textContent == displayValuex) {
+            screen.textContent = '';
             screen.textContent += button.textContent;
         } else {
             screen.textContent += button.textContent;
@@ -112,6 +118,14 @@ opButtons.forEach((button) => {
     });
 });
 
+// decimal.addEventListener('click', () => {
+//     if(decimal < 1) {
+//         add decimal
+//     } else {
+//         do not add decimal
+//     }
+// });
+
 equalsButton.addEventListener('click', () => {
     if (equalsCount < 1) {
         if (operater != ''){
@@ -129,7 +143,10 @@ clearButton.addEventListener('click', () => {
 });
 
 deleteButton.addEventListener('click', () => {
-    let length = screen.textContent.length
-    screen.textContent = screen.textContent.slice(0, length-1)
+    let length = screen.textContent.length;
+    screen.textContent = screen.textContent.slice(0, length-1);
 });
 
+function readKeypress(e) {
+    console.log(e);
+}
