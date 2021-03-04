@@ -120,7 +120,7 @@ equalsButton.addEventListener('click', () => {
             equalsCount ++;
         }
     }
-    opCount = 0;
+    // opCount = 0;
 });
 
 clearButton.addEventListener('click', () => {
