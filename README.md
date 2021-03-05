@@ -8,6 +8,17 @@ The most difficult problem I faced was getting the calculator to store the varia
 Whenever I need to reset the count to prevent a function call on the next click, i just reset the opCount variable to 0. This is precisely what I do on the equals button push.
 
 So many bugs
-    fix set values so y does not inherit x value on    multiple operater pushes
-    
-    fix y converts to zero on multiple op pushes.
+fix set values so y does not inherit x value on multiple operater pushes
+
+double click operation sets y as x value and runs operation
+
+delete button changing display but not saving new value.
+
+if decimal deleted, new decimal cannot be added until operation or clear
+
+
+ToDo:
+add keyboard support
+add negative button
+better css style
+fix bugs, delete button acts funky after operation 

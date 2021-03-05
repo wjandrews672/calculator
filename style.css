@@ -51,6 +51,8 @@ html, body {
     width: auto;
     background-color: rgb(64, 64, 212);
     border-radius: 10px;
+    outline: none;
+    cursor: pointer;
 }
 
 .delete {
@@ -60,6 +62,8 @@ html, body {
     width: auto;
     background-color: rgb(196, 66, 66);
     border-radius: 10px;
+    outline: none;
+    cursor: pointer;
 }
 
 
@@ -69,7 +73,6 @@ html, body {
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-gap: 6px;
     margin: 6px;
-    
 }
 
 .number {
@@ -80,9 +83,8 @@ html, body {
     border-radius: 10px;
     background-color: rgb(185, 181, 181);
     padding: 10px 30px;
-    /* grid-row: 1 / span 5;
-    grid-column: 1 / span 3; */
-    /* use fr,repeat on children buttons */
+    outline: none;
+    cursor: pointer;
 }
 
 .operator {
@@ -92,7 +94,6 @@ html, body {
     width: auto;
     background-color: rgb(168, 197, 168);
     border-radius: 10px;
-    /* justify-self: flex-end; */
-    /* grid-row: 1 / span 5;
-    grid-column: 4 / span 1; */
+    outline: none;
+    cursor: pointer;
 }

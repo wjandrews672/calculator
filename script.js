@@ -15,6 +15,7 @@ let operater = '';
 let opCount = 0;
 let equalsCount = 0;
 let readyForY = false;
+let decimalCount = 0;
 // screen.textContent='0';
 
 function add(x, y) {
@@ -79,7 +80,6 @@ function operate(op, x, y) {
         displayValuey = null
         screen.textContent = currentValue;
         readyForY = false;
-    
     };
 }
 
@@ -115,16 +115,27 @@ opButtons.forEach((button) => {
 // dont run operate on multiple ops pushes
         opCount++;
         equalsCount = 0;
+        decimalCount = 0;
     });
 });
 
-// decimal.addEventListener('click', () => {
-//     if(decimal < 1) {
-//         add decimal
-//     } else {
-//         do not add decimal
-//     }
-// });
+decimal.addEventListener('click', () => {
+    if(decimalCount < 1) {
+        if (screen.textContent == 0) {
+            screen.textContent = '';
+            screen.textContent += decimal.textContent;
+        } else if (screen.textContent == displayValuex) {
+            screen.textContent = '';
+            screen.textContent += decimal.textContent;
+        } else {
+            screen.textContent += decimal.textContent;
+        }
+        decimalCount++;
+        readyForY = true;
+    } else {
+        return;
+    }
+});
 
 equalsButton.addEventListener('click', () => {
     if (equalsCount < 1) {
@@ -134,12 +145,13 @@ equalsButton.addEventListener('click', () => {
             equalsCount ++;
         }
     }
-    // opCount = 0;
+    decimalCount = 0;
 });
 
 clearButton.addEventListener('click', () => {
     clearScreen();
     clearValues();
+    decimalCount = 0;
 });
 
 deleteButton.addEventListener('click', () => {
@@ -149,4 +161,10 @@ deleteButton.addEventListener('click', () => {
 
 function readKeypress(e) {
     console.log(e);
+    //use this. to target pressed key
 }
+
+
+// count decimal points on button press 
+// only allow first decimal on screen
+// reset on operation and clear values
